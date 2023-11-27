@@ -1,5 +1,7 @@
 package com.example.grpc;
 
+import io.grpc.stub.StreamObserver;
+
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
 import static io.grpc.stub.ClientCalls.asyncClientStreamingCall;
@@ -86,23 +88,26 @@ public final class GreetingServiceGrpc {
   public static abstract class GreetingServiceImplBase implements io.grpc.BindableService {
 
     /**
+     *
      */
     public void hello(com.example.grpc.GreetingServiceOuterClass.HelloRequest request,
-        io.grpc.stub.StreamObserver<com.example.grpc.GreetingServiceOuterClass.HelloResponse> responseObserver) {
+                      io.grpc.stub.StreamObserver<com.example.grpc.GreetingServiceOuterClass.HelloResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getHelloMethod(), responseObserver);
     }
 
-    @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
+    @java.lang.Override
+    public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
-          .addMethod(
-            getHelloMethod(),
-            asyncUnaryCall(
-              new MethodHandlers<
-                com.example.grpc.GreetingServiceOuterClass.HelloRequest,
-                com.example.grpc.GreetingServiceOuterClass.HelloResponse>(
-                  this, METHODID_HELLO)))
-          .build();
+              .addMethod(
+                      getHelloMethod(),
+                      asyncUnaryCall(
+                              new MethodHandlers<
+                                      com.example.grpc.GreetingServiceOuterClass.HelloRequest,
+                                      com.example.grpc.GreetingServiceOuterClass.HelloResponse>(
+                                      this, METHODID_HELLO)))
+              .build();
     }
+
   }
 
   /**
